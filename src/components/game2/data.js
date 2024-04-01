@@ -15,6 +15,7 @@ export const data = {
       { source: '4', target: '6', value: 1 },
       { source: '7', target: '1', value: 1 },
       { source: '7', target: '5', value: 1 },
+      { source: '7', target: '4', value: 1 },
     ],
   };
   
