@@ -21,6 +21,7 @@ function App() {
         <Route element={<RequireAuth />}>
           <Route path='/' element={<Dashboard />} />
           <Route path='/game1' element={<Game1/>} />
+          <Route path='/game2' element={<Game2 />} />
         </Route>
       </Routes>
     </AuthProvider>
