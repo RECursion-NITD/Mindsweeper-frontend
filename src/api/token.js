@@ -1,19 +1,20 @@
 // define apis for login
+import { API_ROUTES } from "../utils/apiRoutes"
+import axios from "./axios"
+
 export const refresh = async (formData) => {
-    const response = await fetch(
-      "http://localhost:8000/user/api/token/refresh/",
+    const response = await axios.post(
+      API_ROUTES.TOKEN,
       {
-        method: "POST",
+        refresh:formData,
+      },
+      {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          refresh:formData.refresh,
-        }),
       }
-    );
-    const data = await response.json();
-    console.log("data", data);
+    )
+    const data = await response.data;
     return data;
-  };
+}
   

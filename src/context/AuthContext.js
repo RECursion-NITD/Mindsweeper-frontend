@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("authTokens", JSON.stringify(tokens));
     localStorage.setItem("user",JSON.stringify({
       username: jwtDecode(tokens?.access).username,
-      //phone_number: jwtDecode(tokens?.access).phone_number,
+      phone_number: jwtDecode(tokens?.access).phone_number,
     }))
   };
 
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("authTokens", JSON.stringify(data));
         localStorage.setItem("user",JSON.stringify({
           username: jwtDecode(data?.access).username,
-          //phone_number: jwtDecode(tokens?.access).phone_number,
+          phone_number: jwtDecode(data?.access).phone_number,
         }))
         setAuthToken(data);
       })
@@ -88,7 +88,7 @@ export const AuthProvider = ({ children }) => {
 
     let interval = setInterval(() => {
       if (authToken) {
-        refreshTokens();
+        refreshTokens(authToken);
       }
     }, 360000);
     return () => clearInterval(interval);
