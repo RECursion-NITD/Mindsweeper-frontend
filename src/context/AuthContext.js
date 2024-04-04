@@ -3,6 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import { createContext, useEffect, useState } from "react";
 import { refresh } from "../api/token";
 import { login } from "../api/login";
+import { signup } from "../api/signup";
 
 const AuthContext = createContext();
 export default AuthContext;
@@ -51,6 +52,24 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
+
+  const signupUser = async (formData,navigate) => {
+    signup(formData)
+      .then((data) => {
+        console.log('signed up');
+        localStorage.setItem("authTokens", JSON.stringify(data));
+        localStorage.setItem("user",JSON.stringify({
+          username: jwtDecode(data?.access).username,
+          phone_number: jwtDecode(data?.access).phone_number,
+        }))
+        setAuthToken(data);
+        navigate('/');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const logoutUser = () => {
     localStorage.removeItem("authTokens");
     localStorage.removeItem("user");
@@ -80,6 +99,7 @@ export const AuthProvider = ({ children }) => {
     loginUser: loginUser,
     logoutUser: logoutUser,
     decodeTokens: decodeTokens,
+    signupUser: signupUser,
   };
 
   useEffect(() => {

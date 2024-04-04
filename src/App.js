@@ -8,6 +8,7 @@ import Game2 from './components/game2/Game2.jsx';
 import RequireAuth from './components/RequireAuth.js';
 import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar/Navbar.jsx';
+import SignUp from './components/signUp/signUp.jsx';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         {/* Public routes */}
         <Route path='/login' element={<Login/>}/>
+        <Route path='/signUp' element={<SignUp/>}/>
         {/* private routes */}
         <Route element={<RequireAuth />}>
           <Route path='/' element={<Dashboard />} />

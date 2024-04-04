@@ -1,0 +1,125 @@
+.main{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+video{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.signUp{
+    /* background: url('Rectangle 1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; */
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 1px 1px 20px 2px rgba(199, 193, 255, 0.25);
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 350px;
+    height: auto;
+    /* backdrop-filter: blur(8px) saturate(100%);
+    -webkit-backdrop-filter: blur(8px) saturate(100%); */
+    background-color: rgba(17, 25, 40, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+form h2{
+    color: white;
+}
+
+form label{
+    color: white;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin: 2px;
+}
+
+.form-group input{
+    background-color: #D9D9D9;
+    opacity: 0.35;
+    border-radius: 7px;
+    padding: 5px;
+    width: 270px;
+    height: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.signUp form button{
+    margin-top: 20px;
+    background-color: #025ECA;
+    padding: 10px;
+    border-radius: 15px;
+    color: white;
+    border: none;
+    width: 100px;
+    font-size: 17px;
+}
+
+.signUp form button:hover{
+    cursor: pointer;
+}
+
+.header{
+    color: white;
+    margin-top: 10px;
+    height: 150px;
+    width: 400px;
+    background: url('blackhole.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex; /* Add display flex */
+    flex-direction: column; /* Arrange items vertically */
+    justify-content: space-between; /* Space items vertically */
+    position: relative; /* Add position relative for positioning .btm */
+}
+
+.header h1{
+    margin: 0;
+    padding: 0;
+}
+
+.btm{
+    color: white;
+    padding: 0;
+    margin: 0;
+    position: absolute; /* Position the .btm absolutely */
+    bottom: 0; /* Align to bottom */
+    right: 0; /* Align to right */
+}
+.btm p{
+    color: white;
+    padding: 0;
+    margin: 0;
+    float: right;
+}
+
+.header img{
+    height: 250px;
+    width: auto;
+}
