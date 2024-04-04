@@ -1,0 +1,62 @@
+.main{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+video{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.dashboard{
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.games{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    width: 70%;
+    flex-wrap: wrap;
+}
+
+.game {
+    position: relative;
+  }
+  
+  .game img {
+    max-width: 280px;
+    height: auto;
+    transition: filter 0.3s ease;
+  }
+  .game:hover img {
+    filter: brightness(70%); /* Darken the image when hovered */
+    cursor: pointer;
+  }
+  
+  .game p {
+    position: absolute;
+    bottom: 10px; /* Adjust this value to change the distance from the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7); /* Add background color for better readability */
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    width: 100%;
+    font-size: 17px;
+  }
+  
