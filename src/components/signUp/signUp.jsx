@@ -23,7 +23,8 @@ function SignUp() {
       password : formData.password,
       phone_number : formData.phoneNumber,
     }
-    await signupUser(userData,navigate);
+    await signupUser(userData);
+    navigate('/');
   }
 
 

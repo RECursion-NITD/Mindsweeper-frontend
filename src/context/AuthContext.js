@@ -56,14 +56,17 @@ export const AuthProvider = ({ children }) => {
   const signupUser = async (formData,navigate) => {
     signup(formData)
       .then((data) => {
-        console.log('signed up');
+        console.log(jwtDecode(data?.access).username,jwtDecode(data?.access).phone_number);
         localStorage.setItem("authTokens", JSON.stringify(data));
         localStorage.setItem("user",JSON.stringify({
           username: jwtDecode(data?.access).username,
           phone_number: jwtDecode(data?.access).phone_number,
         }))
         setAuthToken(data);
-        navigate('/');
+        setUser({
+          username: jwtDecode(data?.access).username,
+          phone_number: jwtDecode(data?.access).phone_number,
+        })
       })
       .catch((err) => {
         console.log(err);
