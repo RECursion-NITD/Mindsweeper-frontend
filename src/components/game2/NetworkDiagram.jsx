@@ -2,6 +2,8 @@ import * as d3 from 'd3';
 import { useEffect, useRef } from 'react';
 import { RADIUS, drawNetwork } from './drawNetwork';
 import { Data, Link, Node } from './data';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const NetworkDiagram = ({
   width,
@@ -12,34 +14,85 @@ export const NetworkDiagram = ({
   // Node positions are initialized by d3
   const links = data.links.map((d) => ({ ...d }));
   const nodes = data.nodes.map((d) => ({ ...d }));
-
+  let X = 0;
+  let Y = 0;
   const canvasRef = useRef(null);
+  const colorCode = useRef('0000000');
 
 
-    function handleNodeClick (event){
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext('2d');
-        const rect = canvas.getBoundingClientRect();
-        const mouseX = event.clientX - rect.left;
-        const mouseY = event.clientY - rect.top;
+  function handleNodeClick(event) {
+    const canvas = canvasRef.current;
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+    X = mouseX;
+    Y = mouseY;
+    console.log(X, Y);
+  };
 
-        nodes.forEach(node => {
-            const dx = mouseX - node.x;
-            const dy = mouseY - node.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance <= RADIUS) {
-                const newValue = prompt('Enter new value for the node:');
-                if (newValue !== null) {
-                    node.value = newValue;
-                    drawNetwork(ctx, width, height, nodes, links);
+  function handleKeyDown(event) {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    console.log(X, Y);
+
+    nodes.forEach((node) => {
+      const dx = X - node.x;
+      const dy = Y - node.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance <= RADIUS) {
+        let newValue = node.value === '0' ? "" : node.value;
+        const keyPressed = event.key;
+        if (event.key === "Backspace") {
+          newValue = newValue.slice(0, -1);
+          if(newValue === ''){
+            newValue = '0';
+          }
+          node.value = newValue.trim();
+                for(let i=0;i<7;i++){
+                    data.nodes[i]=nodes[i];
                 }
+                let newCode = '';
+                for (let i = 0; i < 7; i++) {
+                    newCode += Math.round(Math.random());
+                }
+                colorCode.current = newCode;
+                console.log(colorCode);
+                drawNetwork(ctx, width, height, nodes, links,colorCode.current);
+        } else if (event.key === '0' || event.key === '1' || event.key === '2' || event.key === '3' || event.key === '4' || event.key === '5' || event.key === '6' || event.key === '7' || event.key === '8' || event.key === '9') {
+          newValue += keyPressed;
+          if (newValue > 13) {
+            toast("Values greater than 13 are NOT allowed !!");
+          } else if (newValue % 2 === 0 && newValue !== '0' && newValue !== '') {
+            console.log(newValue);
+            toast("Even values are NOT allowed !!");
+          } else {
+            node.value = newValue.trim();
+            for (let i = 0; i < 7; i++) {
+              data.nodes[i] = nodes[i];
             }
-        });
-    };
+            let newCode = '';
+            for (let i = 0; i < 7; i++) {
+                newCode += Math.round(Math.random());
+            }
+            colorCode.current = newCode;
+            console.log(colorCode);
+            drawNetwork(ctx, width, height, nodes, links,colorCode.current);
+          }
+        }
 
-    const handleCanvasClick = (event) => {
-        handleNodeClick(event);
-    };
+      }
+    });
+  }
+
+
+
+  const handleCanvasClick = (event) => {
+    handleNodeClick(event);
+  };
+
+  const handleCanvasKeyDown = (event) => {
+    handleKeyDown(event);
+  };
 
 
   useEffect(() => {
@@ -66,7 +119,7 @@ export const NetworkDiagram = ({
 
       // at each iteration of the simulation, draw the network diagram with the new node positions
       .on('tick', () => {
-        drawNetwork(context, width, height, nodes, links);
+        drawNetwork(context, width, height, nodes, links, "0000000");
       });
   }, [width, height, nodes, links]);
 
@@ -81,7 +134,10 @@ export const NetworkDiagram = ({
         width={width}
         height={height}
         onClick={handleCanvasClick}
+        onKeyDown={handleCanvasKeyDown}
+        tabIndex={0}
       />
+      <ToastContainer position="top-center"/>
     </div>
   );
 };

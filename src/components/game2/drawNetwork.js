@@ -1,9 +1,12 @@
+import { color } from "d3";
+
 export const RADIUS = 30;
 
 export const drawNetwork = (
-  context,width,height,nodes,links
+  context,width,height,nodes,links,colorCode
 ) => {
   context.clearRect(0, 0, width, height);
+  let colors = ['green','red']
 
   // Draw the links first
   links.forEach((link) => {
@@ -14,7 +17,7 @@ export const drawNetwork = (
   });
 
   // Draw the nodes
-  nodes.forEach((node) => {
+  nodes.forEach((node,key) => {
     if (!node.x || !node.y) {
       return;
     }
@@ -22,7 +25,7 @@ export const drawNetwork = (
     context.beginPath();
     context.moveTo(node.x + RADIUS, node.y);
     context.arc(node.x, node.y, RADIUS, 0, 2 * Math.PI);
-    context.fillStyle = '#cb1dd1';
+    context.fillStyle = colors[colorCode[key]]//'#cb1dd1';
     context.fill();
     context.lineWidth = 5;
     context.lineWidth = 5;

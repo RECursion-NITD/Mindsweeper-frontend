@@ -1,6 +1,6 @@
 export const data = {
     nodes: [
-      { id: '1', group: 'team1', value: '0'},
+      { id: '1', group: 'team1' , value: '0'},
       { id: '2', group: 'team2' , value: '0'},
       { id: '3', group: 'team3' , value: '0'},
       { id: '4', group: 'team4' , value: '0'},
