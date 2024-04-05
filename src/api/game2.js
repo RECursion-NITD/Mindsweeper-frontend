@@ -46,6 +46,6 @@ export const createGame = async (access,phn) => {
         }
     );
     const data = await response.data;
-    console.log('fetch',data);
+    // console.log('fetch',data);
     return data;
   }

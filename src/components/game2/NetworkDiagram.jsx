@@ -12,7 +12,7 @@ export const NetworkDiagram = ({
 }) => {
   // The force simulation mutates links and nodes, so create a copy first
   // Node positions are initialized by d3
-  console.log('network',data.nodes);
+  // console.log('network',data.nodes);
   const links = data.links.map((d) => ({ ...d }));
   const nodes = data.nodes.map((d) => ({ ...d }));
   let X = 0;
