@@ -20,6 +20,7 @@ const Grid = () => {
   const [heading, setHeading] = useState("");
   const [points, setPoints] = useState(0);
 
+
   const handleChange = (e, rowIndex, colIndex) => {
     const { value, keyCode } = e.target;
     if (/^[0-9+\-=*/]*$/.test(value) && value.length === 1 && keyCode !== 8) {
