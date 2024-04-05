@@ -4,5 +4,8 @@ export const API_ROUTES = {
   FETCH_GAME1: '/game/api/gamestring/',
   LOGIN: '/user/api/login/',
   TOKEN: '/user/api/token/refresh/',
+  CREATE_GAME2: 'graph/api/generate/',
+  VALIDATE2: 'graph/api/validate/',
+  FETCH_GAME2: 'graph/api/fetch/',
 };
   

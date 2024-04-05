@@ -12,7 +12,7 @@ const Dashboard = () => {
     if (game === 'game1') {
       navigate('/game1'); // Use navigate to go to /game1
     } else if (game === 'game2') {
-      navigate('/game2'); // Use navigate to go to /game2
+        navigate('/game2');// Use navigate to go to /game2
     }
   };
   return (
