@@ -130,6 +130,7 @@ export const NetworkDiagram = ({
 
   return (
     <div>
+      <input ref={fakeInput} inputMode="numeric" id="input" className='fake' onChange={handleKeyDown} />
       <canvas
         ref={canvasRef}
         style={{
@@ -142,7 +143,6 @@ export const NetworkDiagram = ({
         tabIndex={0}
       />
       <ToastContainer position="top-center"/>
-      <input ref={fakeInput} type="text" id="input" className='fake' onChange={handleKeyDown} />
     </div>
   );
 };
