@@ -193,7 +193,7 @@ const Grid = () => {
             <input
               key={colIndex}
               className="grid-cell"
-              type="number"
+              inputMode="numeric"
               maxLength="1"
               value={gridData[rowIndex][colIndex]}
               onChange={(e) => handleChange(e, rowIndex, colIndex)}
