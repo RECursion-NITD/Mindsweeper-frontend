@@ -23,8 +23,6 @@ const Grid = () => {
 
   const handleChange = (e, rowIndex, colIndex) => {
     const { value, keyCode } = e.target;
-    console.log('ok');
-    console.log(rowIndex,colIndex);
     if (/^[0-9+\-=*/]*$/.test(value) && value.length === 1 && keyCode !== 8) {
       const newData = gridData.map((row, index) =>
         index === rowIndex ? row.map((cell, i) => (i === colIndex ? value : cell)) : row
@@ -38,40 +36,41 @@ const Grid = () => {
         index === rowIndex ? row.map((cell, i) => (i === colIndex ? value : cell)) : row
       );
       setGridData(newData);
-      console.log(newData);
+    }
+    if(value === ''){
+      console.log('ok');
+      const newData = gridData.map((row, index) =>
+        index === rowIndex ? row.map((cell, i) => (i === colIndex ? '' : cell)) : row
+      );
+      setGridData(newData);
+      // focusPrevInput(rowIndex, colIndex);
     }
   };
 
   
 
   const focusNextInput = (rowIndex, colIndex) => {
-    const nextColIndex = colIndex===7 ? 7 : (colIndex + 1);
+    const nextColIndex = (colIndex + 1) % 8;
     setCurrCol(nextColIndex);
-    if (rowIndex < 6) {
-      inputRefs.current[rowIndex][nextColIndex].focus();
+    const nextRowIndex = nextColIndex === 0 ? rowIndex + 1 : rowIndex;
+    setCurrRow(nextRowIndex);
+    if (nextRowIndex < 6) {
+      inputRefs.current[nextRowIndex][nextColIndex].focus();
     }
   };
 
   const focusPrevInput = (rowIndex, colIndex) => {
     const prevColIndex = colIndex === 0 ? 0 : colIndex-1;
-    console.log(prevColIndex,colIndex);
     setCurrCol(prevColIndex);
     inputRefs.current[rowIndex][prevColIndex].focus();
   };
 
   const handleClickInGrid = () => {
-    console.log(gridData);
-    if (true) {
+    console.log(currRow,currCol);
+    if (currCol === 0 && currRow !== 0) {
       let s = '';
       for (let i = 0; i < 8; i++) {
-        var data = gridData[currRow][i] === '' ? '' : gridData[currRow][i];
-        s = s + data;
-      }
-      if(s.length !==8){
-        toast.error('Please fill all the cells', {
-          position: "bottom-center",
-        });
-        return;
+        s = s + gridData[currRow - 1][i];
       }
       validate(s,user.phone_number,token.access)
       .then((data) => {
@@ -124,8 +123,7 @@ const Grid = () => {
         index === rowIndex ? row.map((cell, i) => (i === colIndex ? '' : cell)) : row
       );
       setGridData(newData);
-      if(currCol === colIndex)
-        focusPrevInput(rowIndex, colIndex);
+      focusPrevInput(rowIndex, colIndex);
     }
     else if(e.key === 'Enter'){
       handleClickInGrid();
@@ -137,7 +135,6 @@ const Grid = () => {
           index === rowIndex ? row.map((cell, i) => (i === colIndex ? value : cell)) : row
         );
         setGridData(newData);
-        console.log(newData);
         focusNextInput(rowIndex, colIndex);
       }
     }
@@ -170,6 +167,7 @@ const Grid = () => {
       }
     );
   };
+
   useEffect (() => {
     fetchGame1(token.access,user.phone_number)
       .then((data)=>{
@@ -186,19 +184,15 @@ const Grid = () => {
       });
     },[]);
 
-    useEffect (()=>{
-      console.log(currCol);
-    },[currCol]);
-
   return (
     <div className="grid-container">
       {gridData.map((row, rowIndex) => (
         <div key={rowIndex} className="grid-row">
           {row.map((cell, colIndex) => (
             <input
-              type='text'
               key={colIndex}
               className="grid-cell"
+              type="text"
               maxLength="1"
               value={gridData[rowIndex][colIndex]}
               onChange={(e) => handleChange(e, rowIndex, colIndex)}
