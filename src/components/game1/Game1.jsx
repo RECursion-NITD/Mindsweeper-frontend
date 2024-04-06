@@ -43,7 +43,7 @@ const Grid = () => {
         index === rowIndex ? row.map((cell, i) => (i === colIndex ? '' : cell)) : row
       );
       setGridData(newData);
-      // focusPrevInput(rowIndex, colIndex);
+      focusPrevInput(rowIndex, colIndex);
     }
   };
 
@@ -118,14 +118,7 @@ const Grid = () => {
   };
 
   const handleKeyPress = (e, rowIndex, colIndex) => {
-    if (e.key === 'Backspace') { // Check if the backspace key was pressed
-      const newData = gridData.map((row, index) =>
-        index === rowIndex ? row.map((cell, i) => (i === colIndex ? '' : cell)) : row
-      );
-      setGridData(newData);
-      focusPrevInput(rowIndex, colIndex);
-    }
-    else if(e.key === 'Enter'){
+    if(e.key === 'Enter'){
       handleClickInGrid();
     }
     else{
