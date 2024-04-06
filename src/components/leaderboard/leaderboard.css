@@ -1,0 +1,75 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+    width: 70vw;
+    margin-top: 8vh;
+}
+
+.main-leaderboard {
+    max-width: 600px;
+    min-width: 370px;
+    width: 100%;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .main-leaderboard h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .entry-container {
+    border-top: 2px solid #ccc;
+}
+
+.entry-head{
+    display: flex;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .entry {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 1.2rem;
+  }
+  
+  .entry-head {
+    font-weight: bold;
+  }
+  
+  .username {
+    flex: 1;
+    text-align: left;
+    padding-left: 20px;
+    display: flex;
+  }
+
+  .sl{
+    padding-right: 8px;
+  }
+
+  .points{
+    flex: 1;
+    text-align: right;
+    padding-right: 20px;
+  }
+  
+  .entry:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  .entry:hover {
+    background-color: #e6e6e6;
+    transition: background-color 0.3s ease;
+  }
+  

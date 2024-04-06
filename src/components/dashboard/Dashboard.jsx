@@ -18,17 +18,19 @@ const Dashboard = () => {
   return (
     <>
       <div className="main">
-        <video src={spacegif} autoPlay loop muted></video>
+        {/* <video src={spacegif} autoPlay loop muted></video> */}
         <div className="dashboard">
           <h1>Pick a Game</h1>
-          <div className="games">
-            <div className="game" onClick={() => handleGameClick('game1')}>
-              <img src={game1} alt="" />
-              <p>Nerdle</p>
-            </div>
-            <div className="game" onClick={() => handleGameClick('game2')}>
-              <img src={game2} alt="" />
-              <p>Constellations</p>
+          <div className='container-main'>
+            <div className="games">
+              <div className="game" onClick={() => handleGameClick('game1')}>
+                <img src={game1} alt="" />
+                <p>Nerdle</p>
+              </div>
+              <div className="game" onClick={() => handleGameClick('game2')}>
+                <img src={game2} alt="" />
+                <p>Constellations</p>
+              </div>
             </div>
           </div>
         </div>

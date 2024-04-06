@@ -19,6 +19,7 @@ function App() {
         {/* Public routes */}
         <Route path='/login' element={<Login/>}/>
         <Route path='/signUp' element={<SignUp/>}/>
+        <Route path='/leaderboard' element={<Leaderboard/>}/>
         {/* private routes */}
         <Route element={<RequireAuth />}>
           <Route path='/' element={<Dashboard />} />

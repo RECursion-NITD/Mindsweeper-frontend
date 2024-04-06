@@ -41,36 +41,41 @@ export const AuthProvider = ({ children }) => {
     try {
         const data = await login(formData);
         localStorage.setItem("authTokens", JSON.stringify(data));
-        localStorage.setItem("user", JSON.stringify({
-            username: jwtDecode(data?.access).username,
-            phone_number: jwtDecode(data?.access).phone_number,
-        }));
+        localStorage.setItem("user",JSON.stringify({
+          username: jwtDecode(data?.access).username,
+          phone_number: jwtDecode(data?.access).phone_number,
+        }))
         setAuthToken(data);
-    } catch (error) {
-        throw error;
+        setUser({
+          username: jwtDecode(data?.access).username,
+          phone_number: jwtDecode(data?.access).phone_number,
+      })
     }
-};
+    catch (err) {
+      console.log(err);
+    }
+    
+  };
 
 
-
-  const signupUser = async (formData) => {
-    try {
-      const data = await signup(formData);
-      console.log(jwtDecode(data?.access).username, jwtDecode(data?.access).phone_number);
-      localStorage.setItem("authTokens", JSON.stringify(data));
-      localStorage.setItem("user", JSON.stringify({
-        username: jwtDecode(data?.access).username,
-        phone_number: jwtDecode(data?.access).phone_number,
-      }));
-      setAuthToken(data);
-      setUser({
-        username: jwtDecode(data?.access).username,
-        phone_number: jwtDecode(data?.access).phone_number,
+  const signupUser = async (formData,navigate) => {
+    signup(formData)
+      .then((data) => {
+        console.log(jwtDecode(data?.access).username,jwtDecode(data?.access).phone_number);
+        localStorage.setItem("authTokens", JSON.stringify(data));
+        localStorage.setItem("user",JSON.stringify({
+          username: jwtDecode(data?.access).username,
+          phone_number: jwtDecode(data?.access).phone_number,
+        }))
+        setAuthToken(data);
+        setUser({
+          username: jwtDecode(data?.access).username,
+          phone_number: jwtDecode(data?.access).phone_number,
+        })
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    } catch (error) {
-      console.error('Error occurred during signup:', error);
-      throw error;
-    }
   };
 
   const logoutUser = () => {

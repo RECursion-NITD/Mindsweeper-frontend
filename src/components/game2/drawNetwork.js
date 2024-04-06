@@ -1,18 +1,20 @@
 import { color } from "d3";
 
-export const RADIUS = 30;
+export const RADIUS = 25;
 
 export const drawNetwork = (
-  context,width,height,nodes,links,colorCode
+  context,width,height,nodes,links,colorCode,edgeValidity
 ) => {
   context.clearRect(0, 0, width, height);
   let colors = ['green','red']
+  let edgeColors = ['#000000','#FF0000']
 
   // Draw the links first
-  links.forEach((link) => {
+  links.forEach((link,key) => {
     context.beginPath();
     context.moveTo(link.source.x, link.source.y);
     context.lineTo(link.target.x, link.target.y);
+    context.strokeStyle = edgeColors[edgeValidity[key]];
     context.stroke();
   });
 

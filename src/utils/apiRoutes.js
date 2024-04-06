@@ -7,5 +7,7 @@ export const API_ROUTES = {
   CREATE_GAME2: 'graph/api/generate/',
   VALIDATE2: 'graph/api/validate/',
   FETCH_GAME2: 'graph/api/fetch/',
+  LEADERBOARD: 'user/api/ranking/',
+  SIGNUP: '/user/api/register/'
 };
   
