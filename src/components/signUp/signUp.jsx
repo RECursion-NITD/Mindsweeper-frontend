@@ -1,8 +1,10 @@
 import React from 'react';
 import './signUp.css';
 import space from './space.mp4';
+import spacegif from './spacegif.mp4'
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 function SignUp() {
     const [formData, setFormData] = React.useState({
@@ -17,15 +19,22 @@ function SignUp() {
   
   const navigate = useNavigate();
 
-  const submitHandler = async ()=>{
+  const submitHandler = async () => {
     const userData = {
-      username : formData.username,
-      password : formData.password,
-      phone_number : formData.phoneNumber,
+      username: formData.username,
+      password: formData.password,
+      phone_number: formData.phoneNumber,
+    };
+  
+    try {
+      await signupUser(userData);
+      navigate('/');
+    } catch (error) {
+      console.error('Error occurred during signup:', error);
+      toast.error(error.response.data.error);
+      // Handle the error appropriately
     }
-    await signupUser(userData);
-    navigate('/');
-  }
+  };
 
 
     const handleChange = (e) => {
@@ -52,8 +61,9 @@ function SignUp() {
 
     return (
         <>
+        <ToastContainer />
         <div className="main">
-            <video src={space} autoPlay loop muted></video>
+            <video src={spacegif} autoPlay loop muted></video>
             <div className="signUp">
             <div className="header">
                 <h1>Mind</h1>

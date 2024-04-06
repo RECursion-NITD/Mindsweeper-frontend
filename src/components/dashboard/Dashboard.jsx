@@ -1,6 +1,6 @@
 import React from 'react';
 import './Dashboard.css';
-import space from '../signUp/space.mp4';
+import spacegif from '../signUp/spacegif.mp4';
 import game1 from './game1.png';
 import { useNavigate } from 'react-router-dom';
 import game2 from './game2.png';
@@ -18,7 +18,7 @@ const Dashboard = () => {
   return (
     <>
       <div className="main">
-        <video src={space} autoPlay loop muted></video>
+        <video src={spacegif} autoPlay loop muted></video>
         <div className="dashboard">
           <h1>Pick a Game</h1>
           <div className="games">
