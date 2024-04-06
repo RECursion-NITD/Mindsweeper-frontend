@@ -196,7 +196,7 @@ const Grid = () => {
         <div key={rowIndex} className="grid-row">
           {row.map((cell, colIndex) => (
             <input
-              inputMode='numeric' 
+              type='number'
               key={colIndex}
               className="grid-cell"
               maxLength="1"
