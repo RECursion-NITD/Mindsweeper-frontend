@@ -21,7 +21,7 @@ export const createGame = async (access,phn) => {
  export const validate = async (input, phn, access) => {
     const response = await axios.post(
         VALIDATE, 
-        { phone : phn, input: input},
+        { nodes:input.nodes , links:input.links},
         {
             headers: {
                 "Content-Type": "application/json",

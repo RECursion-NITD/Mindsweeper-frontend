@@ -1,7 +1,16 @@
 .alert{
     width: 30%;
-    min-width: 500px;
+    min-width: 400px;
     height: 10%;
+    min-height: 250px;
+    background-color: white;
+    border-radius: 12px;
+    border: 2px solid #aaaaaa;
+}
+.alert2{
+    width: 30%;
+    min-width: 400px;
+    height: 8%;
     min-height: 250px;
     background-color: white;
     border-radius: 12px;

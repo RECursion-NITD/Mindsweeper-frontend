@@ -10,6 +10,7 @@ export const NetworkDiagram = ({
   height,
   data,
   colorCode,
+  edgeValidity
 }) => {
   // The force simulation mutates links and nodes, so create a copy first
   // Node positions are initialized by d3
@@ -20,10 +21,6 @@ export const NetworkDiagram = ({
   let Y = 0;
   const canvasRef = useRef(null);
   //const colorCode = useRef('0000000');
-
-
-
-
 
 
   function handleNodeClick(event) {
@@ -57,7 +54,7 @@ export const NetworkDiagram = ({
                 for(let i=0;i<7;i++){
                     data.nodes[i]=nodes[i];
                 }
-                drawNetwork(ctx, width, height, nodes, links,colorCode);
+                drawNetwork(ctx, width, height, nodes, links,colorCode, edgeValidity);
         } else if (event.key === '0' || event.key === '1' || event.key === '2' || event.key === '3' || event.key === '4' || event.key === '5' || event.key === '6' || event.key === '7' || event.key === '8' || event.key === '9') {
           newValue += keyPressed;
           if (newValue > 13) {
@@ -70,7 +67,7 @@ export const NetworkDiagram = ({
             for (let i = 0; i < 7; i++) {
               data.nodes[i] = nodes[i];
             }
-            drawNetwork(ctx, width, height, nodes, links,colorCode);
+            drawNetwork(ctx, width, height, nodes, links,colorCode, edgeValidity);
           }
         }
 
@@ -106,15 +103,15 @@ export const NetworkDiagram = ({
       // list of forces we apply to get node positions
       .force(
         'link',
-        d3.forceLink(links).id((d) => d.id).distance(150),
+        d3.forceLink(links).id((d) => d.id).distance(80),
       )
       .force('collide', d3.forceCollide().radius(RADIUS))
-      .force('charge', d3.forceManyBody().strength(-480))
+      .force('charge', d3.forceManyBody().strength(-400))
       .force('center', d3.forceCenter(width / 2, height / 2))
 
       // at each iteration of the simulation, draw the network diagram with the new node positions
       .on('tick', () => {
-        drawNetwork(context, width, height, nodes, links, colorCode);
+        drawNetwork(context, width, height, nodes, links, colorCode, edgeValidity);
       });
   }, [width, height, nodes, links]);
 
