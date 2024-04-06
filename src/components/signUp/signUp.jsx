@@ -1,6 +1,7 @@
 import React from 'react';
 import './signUp.css';
 import space from './space.mp4';
+import spacegif from './spacegif.mp4'
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -62,7 +63,7 @@ function SignUp() {
         <>
         <ToastContainer />
         <div className="main">
-            <video src={space} autoPlay loop muted></video>
+            <video src={spacegif} autoPlay loop muted></video>
             <div className="signUp">
             <div className="header">
                 <h1>Mind</h1>
