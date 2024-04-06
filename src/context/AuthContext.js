@@ -49,11 +49,12 @@ export const AuthProvider = ({ children }) => {
         setUser({
           username: jwtDecode(data?.access).username,
           phone_number: jwtDecode(data?.access).phone_number,
-        })
       })
-      .catch((err) => {
-        console.log(err);
-      });
+    }
+    catch (err) {
+      console.log(err);
+    }
+    
   };
 
 

@@ -2,17 +2,12 @@ import { API_ROUTES } from "../utils/apiRoutes";
 import axios from "./axios";
 
 // define APIs for signup
-const SIGNUP = API_ROUTES.SIGNUP;
+const LEADERBOARD = API_ROUTES.LEADERBOARD;
 
-export const signup = async (formData) => {
+export const ranking = async () => {
     try {
         const response = await axios.post(
-            SIGNUP,
-            {
-                username: formData.username,
-                password: formData.password,
-                phone_number: formData.phone_number,
-            },
+            LEADERBOARD,
             {
                 headers: {
                     "Content-Type": "application/json",

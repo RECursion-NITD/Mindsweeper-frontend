@@ -5,10 +5,8 @@ import useAuth from '../../hooks/useAuth';
 import { createGame, validate, fetchGame2 } from '../../api/game2';
 import { ToastContainer, toast } from 'react-toastify';
 import Alert from '../alert/Alert';
-import './game2.css'
 import Alert2 from '../alert/Alert2';
-import { ToastContainer, toast } from 'react-toastify';
-import './Game2.css'
+import './game2.css'
 
 const Game2 = () => {
     const { user, token } = useAuth();
