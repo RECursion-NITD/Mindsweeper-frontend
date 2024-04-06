@@ -62,3 +62,8 @@ input[type=number] {
   -moz-appearance: textfield;
 }
   
+@media (max-width: 768px) {
+  .container1{
+    display: none !important; 
+  }
+}

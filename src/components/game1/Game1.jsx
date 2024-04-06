@@ -194,6 +194,7 @@ const Grid = () => {
               key={colIndex}
               className="grid-cell"
               inputMode="numeric"
+              type='tel'
               maxLength="1"
               value={gridData[rowIndex][colIndex]}
               onChange={(e) => handleChange(e, rowIndex, colIndex)}

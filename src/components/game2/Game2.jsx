@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Alert from '../alert/Alert';
 import Alert2 from '../alert/Alert2';
 import './game2.css'
+import 'react-toastify/dist/ReactToastify.css';
 
 const Game2 = () => {
     const { user, token } = useAuth();
