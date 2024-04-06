@@ -60,80 +60,63 @@ function SignUp() {
     };
 
     return (
-        <>
-        <ToastContainer />
-        <div className="main">
-            <video src={spacegif} autoPlay loop muted></video>
-            <div className="signUp">
-            <div className="header">
-                <h1>Mind</h1>
-                <div className="btm">
-                    <h1>Sweepers</h1>
-                    <p>2024</p>
-                </div>
-            </div>
+    <>
+      <ToastContainer />
       <form onSubmit={handleSubmit}>
         <h2>Sign Up</h2>
         <div className="form-group">
-          <label htmlFor="name">Name:</label>
           <input 
             type="text" 
             id="name"
             name="name" 
-            value={formData.name} 
+            placeholder='Name'
             onChange={handleChange} 
             required 
           />
         </div>
         <div className="form-group">
-          <label htmlFor="rollNumber">Roll Number:</label>
           <input 
             type="text" 
             id="rollNumber"
             name="rollNumber" 
-            value={formData.rollNumber} 
+            placeholder='Roll Number'
             onChange={handleChange} 
             required 
           />
         </div>
         <div className="form-group">
-          <label htmlFor="phoneNumber">Phone Number:</label>
           <input 
             type="tel" 
             id="phoneNumber"
             name="phoneNumber" 
-            value={formData.phoneNumber} 
+            placeholder='Phone Number'
             onChange={handleChange} 
             required 
           />
         </div>
         <div className="form-group">
-          <label htmlFor="username">Username:</label>
           <input 
             type="text" 
             id="username"
             name="username" 
-            value={formData.username} 
+            placeholder='Username'
             onChange={handleChange} 
             required 
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
           <input 
             type="password" 
             id="password"
             name="password" 
-            value={formData.password} 
+            placeholder='Password'
             onChange={handleChange} 
             required 
           />
         </div>
-        <button type="submit" onClick={submitHandler}>Sign Up</button>
+        <button className='submit-btn' type="submit" onClick={submitHandler}>Sign Up</button>
       </form>
-    </div>
-        </div>
-        </>
+    </>
     );
 }
 

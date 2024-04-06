@@ -12,10 +12,6 @@ video{
 }
 
 .signUp{
-    /* background: url('Rectangle 1.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center; */
     position: absolute;
     top: 0;
     height: 100vh;
@@ -27,25 +23,19 @@ video{
 }
 
 form{
+    margin-bottom: 20px;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    box-shadow: 1px 1px 20px 2px rgba(199, 193, 255, 0.25);
-    padding: 10px;
-    padding-left: 25px;
-    padding-right: 25px;
-    width: 350px;
-    height: auto;
-    /* backdrop-filter: blur(8px) saturate(100%);
-    -webkit-backdrop-filter: blur(8px) saturate(100%); */
-    background-color: rgba(17, 25, 40, 0.75);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.125);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Adjust width as needed */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
 }
 
 form h2{
-    color: white;
+    color: black;
 }
 
 form label{
@@ -53,35 +43,35 @@ form label{
 }
 
 .form-group{
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    margin: 2px;
 }
 
 .form-group input{
-    background-color: #D9D9D9;
-    opacity: 0.35;
-    border-radius: 7px;
-    padding: 5px;
-    width: 270px;
-    height: 15px;
-    font-size: 20px;
-    font-weight: bold;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 16px;
+    box-sizing: border-box; 
 }
 
 .signUp form button{
-    margin-top: 20px;
-    background-color: #025ECA;
+    width: 100%;
     padding: 10px;
-    border-radius: 15px;
-    color: white;
     border: none;
-    width: 100px;
-    font-size: 17px;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .signUp form button:hover{
-    cursor: pointer;
+    background-color: #0056b3;
 }
 
 .header{

@@ -41,6 +41,9 @@ const Login = () => {
           <button className='submit-btn' type='submit' onClick={submitHandler}>
               Login
           </button>
+          <div className='newuser'>
+              New User? <a href='/signup'>Sign Up</a> Now
+          </div>
       </div>
     </>
   )
