@@ -40,6 +40,13 @@
 
 .container2{
   padding-right: 2vw;
+  display: flex;
+}
+
+.points{
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
 }
 
 .navbar-btn {
@@ -51,8 +58,34 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-right: 40px;
 }
 
 .navbar-btn:hover {
   background-color: #0056b3;
+}
+
+.containerPhone{
+  display: none;
+}
+
+.open{
+  display: none;
+}
+
+@media  (max-width: 768px) {
+  .containerPhone{
+    display: flex;
+  }
+  .open{
+    display: block;
+    position: absolute;
+    top:7vh;
+    width: 100vw;
+    background-color: rgba(17, 25, 40, 0.75);
+  }
+  .open div{
+    padding: 30px 20px;
+    color: white;
+  }
 }

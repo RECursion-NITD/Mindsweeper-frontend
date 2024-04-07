@@ -20,7 +20,6 @@ export const signup = async (formData) => {
             }
         );
         const data = await response.data;
-        console.log("data", data);
         return data;
     } catch (error) {
         // Handle error

@@ -22,7 +22,6 @@ export const login = async (formData) => {
 
         // Extract and return response data
         const data = await response.data;
-        console.log("data", data);
         return data;
     } catch (error) {
         // Handle error

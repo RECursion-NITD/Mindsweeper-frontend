@@ -14,6 +14,12 @@ const Login = () => {
 
   const submitHandler = async () => {
     try {
+        if(!username || !password){
+          toast('Please fill all the fields',{
+            position:'bottom-center'
+          })
+          return
+        }
         const formData = {
             username: username.trim(),
             password: password.trim(),
@@ -21,7 +27,7 @@ const Login = () => {
         await loginUser(formData);
     } catch (error) {
         console.error('Error occurred during login:', error);
-        toast.error(error.response.data.error);
+        
     }
 };
 
@@ -45,6 +51,7 @@ const Login = () => {
               New User? <a href='/signup'>Sign Up</a> Now
           </div>
       </div>
+      <ToastContainer/>
     </>
   )
 }

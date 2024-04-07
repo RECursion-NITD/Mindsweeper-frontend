@@ -4,6 +4,7 @@ import { createContext, useEffect, useState } from "react";
 import { refresh } from "../api/token";
 import { login } from "../api/login";
 import { signup } from "../api/signup";
+import { toast } from 'react-toastify';
 
 const AuthContext = createContext();
 export default AuthContext;
@@ -34,6 +35,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("user",JSON.stringify({
       username: jwtDecode(tokens?.access).username,
       phone_number: jwtDecode(tokens?.access).phone_number,
+      points: jwtDecode(tokens?.access).points,
     }))
   };
 
@@ -44,15 +46,20 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("user",JSON.stringify({
           username: jwtDecode(data?.access).username,
           phone_number: jwtDecode(data?.access).phone_number,
+          points: jwtDecode(data?.access).points,
         }))
         setAuthToken(data);
         setUser({
           username: jwtDecode(data?.access).username,
           phone_number: jwtDecode(data?.access).phone_number,
+          points: jwtDecode(data?.access).points,
       })
     }
     catch (err) {
       console.log(err);
+      toast.error("Invalid Credentials",{
+        position:'bottom-center'
+      });
     }
     
   };
@@ -71,6 +78,7 @@ export const AuthProvider = ({ children }) => {
         setUser({
           username: jwtDecode(data?.access).username,
           phone_number: jwtDecode(data?.access).phone_number,
+          points: jwtDecode(data?.access).points,
         })
       })
       .catch((err) => {

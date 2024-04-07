@@ -21,17 +21,19 @@ const Leaderboard = () => {
               <div>Username</div>
               <div>Points</div>
             </div>
-            {rankings.map((ranking, index) => (
-              <div className='entry' key={index}>
-                <div className='username'>
-                  <div className='sl'>
-                    {index+1}.
+            <div className='entry-div'>
+              {rankings.map((ranking, index) => (
+                <div className='entry' key={index}>
+                  <div className='username'>
+                    <div className='sl'>
+                      {index+1}.
+                    </div>
+                    {ranking.username}
                   </div>
-                  {ranking.username}
+                  <div className='points'>{ranking.points}</div>
                 </div>
-                <div className='points'>{ranking.points}</div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         )}
       </div>

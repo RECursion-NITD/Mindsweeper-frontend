@@ -129,8 +129,8 @@ export const NetworkDiagram = ({
   }, [width, height, nodes, links]);
 
   return (
-    <div>
-      <input ref={fakeInput} inputMode="numeric" id="input" className='fake' onChange={handleKeyDown} />
+    <div style={{"zIndex":20}}>
+      <input ref={fakeInput} style={{"outline":"none", "border":"none", "width":"1vw","color":"white","height":"1vh"}} inputMode="numeric" id="input" className='fake' onChange={handleKeyDown} />
       <canvas
         ref={canvasRef}
         style={{
