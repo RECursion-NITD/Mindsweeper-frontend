@@ -77,10 +77,11 @@ export const NetworkDiagram = ({
         let newValue = fakeInput.current.value;
         newValue = newValue.trim();
         newValue = newValue === '' ? "0" : newValue;
-        if (!(event.key === '0' || event.key === '1' || event.key === '2' || event.key === '3' || event.key === '4' || event.key === '5' || event.key === '6' || event.key === '7' || event.key === '8' || event.key === '9')){
+        if (isNaN(newValue)){
           toast("Only numbers are allowed !!");
           newValue = newValue.replace(newValue.substring(newValue.length-1), "");
           fakeInput.current.value = newValue;
+          return;
         }
         if (newValue > 13) {
           toast("Values greater than 13 are NOT allowed !!");
