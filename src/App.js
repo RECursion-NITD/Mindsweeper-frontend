@@ -9,6 +9,7 @@ import RequireAuth from './components/RequireAuth.js';
 import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar/Navbar.jsx';
 import SignUp from './components/signUp/signUp.jsx';
+import Rules from './components/rules/Rules.jsx';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         {/* Public routes */}
         <Route path='/login' element={<Login/>}/>
         <Route path='/signUp' element={<SignUp/>}/>
+        <Route path='/rules' element={<Rules/>}/>
         <Route path='/leaderboard' element={<Leaderboard/>}/>
         {/* private routes */}
         <Route element={<RequireAuth />}>

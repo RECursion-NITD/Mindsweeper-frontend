@@ -20,10 +20,16 @@ function SignUp() {
   const navigate = useNavigate();
 
   const submitHandler = async () => {
+    if(!formData.username || !formData.password || !formData.phoneNumber || !formData.rollNumber){
+      toast('Please fill all the fields',{
+        position:'bottom-center'
+      })
+      return
+    }
     const userData = {
-      username: formData.username,
-      password: formData.password,
-      phone_number: formData.phoneNumber,
+      username: formData.username.trim(),
+      password: formData.password.trim(),
+      phone_number: formData.phoneNumber.trim(),
     };
   
     try {

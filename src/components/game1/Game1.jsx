@@ -169,6 +169,15 @@ const Grid = () => {
     );
   };
 
+  const handleKey = (e, rowIndex, colIndex, k) => {
+    inputRefs.current[rowIndex][colIndex].focus();
+    handleChange({target: {value: k}}, rowIndex, colIndex);
+    const event = new KeyboardEvent('keypress', {
+      key: 'Enter',
+    });
+    inputRefs.current[rowIndex][colIndex].dispatchEvent(event);
+  }    
+
   useEffect (() => {
     fetchGame1(token.access,user.phone_number)
       .then((data)=>{
@@ -193,9 +202,9 @@ const Grid = () => {
             <input
               key={colIndex}
               className="grid-cell"
-              inputMode="numeric"
-              type='number'
               maxLength="1"
+              type='text'
+              onClick={() => {setCurrCol(colIndex);setCurrRow(rowIndex)}}
               value={gridData[rowIndex][colIndex]}
               onChange={(e) => handleChange(e, rowIndex, colIndex)}
               onKeyDown={(e) => handleKeyPress(e, rowIndex, colIndex)}

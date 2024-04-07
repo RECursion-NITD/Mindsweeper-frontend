@@ -1,0 +1,74 @@
+.main-rules{
+    width: 100vw;
+    height: 100vh;
+    padding-top: 22vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 8vh;
+}
+.rules-container{
+    width: 70vw;
+}
+.nerdle-head{
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    display: flex;
+}
+.obj-head{
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    display: flex;
+}
+.obj-content{
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    display: flex;
+}
+.rules-main{
+    font-size: 1.5rem;
+}
+.main-rules{
+    width: 100vw;
+    height: 100vh;
+    padding-top: 35vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+}
+.rules-content{
+    padding-top: 20px;
+}
+.rules-content2{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.game2{
+    padding-top: 50px;
+    margin-bottom: 100px;
+}
+.game2-head{
+    font-size: 1.5rem;
+}
+.game2-obj{
+    padding-top: 20px;
+    font-size: 1.5rem;
+    padding-bottom: 20px;
+}
+.rules-game2{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.head-meain1{
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 900;
+}

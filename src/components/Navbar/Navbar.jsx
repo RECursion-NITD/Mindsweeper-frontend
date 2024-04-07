@@ -24,7 +24,7 @@ const Navbar = () => {
               <div onClick={()=>navigate("/")} className='links'>
                 Dashboard
               </div>
-              <div onClick={()=>navigate("/")} className='links'>
+              <div onClick={()=>navigate("/rules")} className='links'>
                 Rules
               </div>
               <div onClick={()=>navigate("/leaderboard")} className='links'>
@@ -41,7 +41,7 @@ const Navbar = () => {
           <div onClick={()=>navigate("/")} className='links'>
             Dashboard
           </div>
-          <div onClick={()=>navigate("/")} className='links'>
+          <div onClick={()=>navigate("/rules")} className='links'>
             Rules
           </div>
           <div onClick={()=>navigate("/leaderboard")} className='links'>
