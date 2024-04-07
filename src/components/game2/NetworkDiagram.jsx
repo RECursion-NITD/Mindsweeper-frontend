@@ -32,6 +32,18 @@ export const NetworkDiagram = ({
     X = mouseX;
     Y = mouseY;
     console.log(X, Y);
+    nodes.forEach((node) => {;
+      const dx = X - node.x;
+      const dy = Y - node.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance <= RADIUS) {
+        node.group = "main";
+      }
+      else{
+        node.group = "team4";
+      }
+    })
+    drawNetwork(canvas.getContext('2d'), width, height, nodes, links, colorCode, edgeValidity);
   };
 
   function handleKeyDown(event) {
@@ -44,7 +56,7 @@ export const NetworkDiagram = ({
       const dy = Y - node.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
       if (distance <= RADIUS) {
-        
+        node.group = "main";
         // let newValue = node.value === '0' ? "" : fakeInput.current.value;
         // const keyPressed = event.key;
         // if (event.key === '0' || event.key === '1' || event.key === '2' || event.key === '3' || event.key === '4' || event.key === '5' || event.key === '6' || event.key === '7' || event.key === '8' || event.key === '9') {
@@ -65,6 +77,11 @@ export const NetworkDiagram = ({
         let newValue = fakeInput.current.value;
         newValue = newValue.trim();
         newValue = newValue === '' ? "0" : newValue;
+        if (!(event.key === '0' || event.key === '1' || event.key === '2' || event.key === '3' || event.key === '4' || event.key === '5' || event.key === '6' || event.key === '7' || event.key === '8' || event.key === '9')){
+          toast("Only numbers are allowed !!");
+          newValue = newValue.replace(newValue.substring(newValue.length-1), "");
+          fakeInput.current.value = newValue;
+        }
         if (newValue > 13) {
           toast("Values greater than 13 are NOT allowed !!");
           newValue = newValue.replace(newValue.substring(newValue.length-1), "");
@@ -74,15 +91,18 @@ export const NetworkDiagram = ({
           toast("Even values are NOT allowed !!");
           newValue = newValue.replace(newValue.substring(newValue.length-1), "");
           fakeInput.current.value = newValue;
-        } else {
+        } else if(newValue !== "") {
           node.value = newValue;
           for (let i = 0; i < 7; i++) {
             data.nodes[i] = nodes[i];
           }
-          drawNetwork(ctx, width, height, nodes, links, colorCode, edgeValidity);
         }
-
+        
       }
+      else{
+        node.group = "team4";
+      }
+      drawNetwork(ctx, width, height, nodes, links, colorCode, edgeValidity);
     });
   }
 
@@ -129,7 +149,7 @@ export const NetworkDiagram = ({
   }, [width, height, nodes, links]);
 
   return (
-    <div style={{"zIndex":20}}>
+    <div>
       <input ref={fakeInput} style={{"outline":"none", "border":"none", "width":"1vw","color":"white","height":"1vh"}} inputMode="numeric" id="input" className='fake' onChange={handleKeyDown} />
       <canvas
         ref={canvasRef}

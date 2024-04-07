@@ -24,15 +24,29 @@ export const drawNetwork = (
       return;
     }
 
-    context.beginPath();
-    context.moveTo(node.x + RADIUS, node.y);
-    context.arc(node.x, node.y, RADIUS, 0, 2 * Math.PI);
-    context.fillStyle = colors[colorCode[key]]//'#cb1dd1';
-    context.fill();
-    context.lineWidth = 5;
-    context.lineWidth = 5;
-    context.strokeStyle = '#003300';
-    context.stroke();
+    if(node.group === 'main'){
+      context.beginPath();
+      context.moveTo(node.x + RADIUS, node.y);
+      context.arc(node.x, node.y, RADIUS, 0, 2 * Math.PI);
+      context.fillStyle = colors[colorCode[key]];
+      context.fill();
+      context.lineWidth = 5;
+      context.lineWidth = 5;
+      context.strokeStyle = 'yellow';
+      context.stroke();
+    }
+    else{
+      context.beginPath();
+      context.moveTo(node.x + RADIUS, node.y);
+      context.arc(node.x, node.y, RADIUS, 0, 2 * Math.PI);
+      context.fillStyle = colors[colorCode[key]]//'#cb1dd1';
+      context.fill();
+      context.lineWidth = 5;
+      context.lineWidth = 5;
+      context.strokeStyle = '#003300';
+      context.stroke();
+    }
+
 
     // Write text inside the circle
     var text = node.value;

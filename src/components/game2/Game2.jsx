@@ -67,7 +67,7 @@ const Game2 = () => {
                 <button className='btn' onClick={handleReset}>Reset</button>
                 <button className='btn' onClick={handleSubmit}>Submit</button>
             </div>
-            {gameOver && <Alert heading={message} points={5} setGameOver={setGameOver}/>}
+            {gameOver && <Alert heading={message} points={10} setGameOver={setGameOver}/>}
             {showAlert && <Alert2 heading={message} points={0} setGameOver={setShowAlert}/>}
             <ToastContainer />
         </div>

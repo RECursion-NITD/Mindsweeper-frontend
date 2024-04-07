@@ -30,7 +30,7 @@ const Leaderboard = () => {
                     </div>
                     {ranking.username}
                   </div>
-                  <div className='points'>{ranking.points}</div>
+                  <div className='points-entry'>{ranking.points}</div>
                 </div>
               ))}
             </div>

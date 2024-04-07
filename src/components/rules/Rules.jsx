@@ -34,13 +34,13 @@ const Rules = () => {
                 <div className='rules-content2'>
                 After each guess, the tiles will change colour to give you clues.
                     <div>
-                        Green = correct character, in the correct position.
+                        <span style={{'color':'green'}}>Green</span> = correct character, in the correct position.
                     </div>
                     <div>
-                        Purple = correct character, in the wrong position.
+                        <span style={{'color':'Purple'}}>Purple</span> = correct character, in the wrong position.
                     </div>
                     <div>
-                        Black = incorrect character.
+                        <span style={{'color':'Grey'}}>Grey</span> = incorrect character.
                     </div>
                 </div>
                 <div>
@@ -74,6 +74,15 @@ const Rules = () => {
                 </div>
                 <div>
                 The difference for each edge is calculated by subtracting the value of the node with the smaller number from the value of the node with the larger number.
+                </div>
+                <div>
+                After you are sure about the placements of the numbers press submit to check the feedback.
+                </div>
+                <div>
+                If two node have same number they will be coloured <span style={{'color':'red'}}>red</span> after feedback.
+                </div>
+                <div>
+                If two edges have same difference they will be coloured <span style={{'color':'red'}}>red</span> after feedback.
                 </div>
                 <div>
                 The player wins by successfully assigning 7 consecutive odd integers to the nodes of the tree such that each edge has a distinct difference.
