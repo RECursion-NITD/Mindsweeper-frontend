@@ -56,10 +56,16 @@ export const AuthProvider = ({ children }) => {
       })
     }
     catch (err) {
-      console.log(err);
-      toast.error("Invalid Credentials",{
-        position:'bottom-center'
-      });
+      if(err.response?.data?.error[0] == 'E'){
+        toast.error(err.response.data.error,{
+          position:'bottom-center'
+        });
+      }
+      else{
+        toast.error("Invalid Credentials",{
+          position:'bottom-center'
+        });
+      }
     }
     
   };
@@ -68,7 +74,6 @@ export const AuthProvider = ({ children }) => {
   const signupUser = async (formData,navigate) => {
     signup(formData)
       .then((data) => {
-        console.log(jwtDecode(data?.access).username,jwtDecode(data?.access).phone_number);
         localStorage.setItem("authTokens", JSON.stringify(data));
         localStorage.setItem("user",JSON.stringify({
           username: jwtDecode(data?.access).username,
@@ -82,7 +87,16 @@ export const AuthProvider = ({ children }) => {
         })
       })
       .catch((err) => {
-        console.log(err);
+        if(err.response?.data?.error[0] == 'E'){
+          toast.error(err.response.data.error,{
+            position:'bottom-center'
+          });
+        }
+        else{
+          toast.error("Invalid Credentials",{
+            position:'bottom-center'
+          });
+        }
       });
   };
 

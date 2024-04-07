@@ -36,7 +36,7 @@ const Navbar = () => {
           </div>
           <div className="containerPhone">
               <button onClick={(e)=>setActive(!active)}>
-                Open
+                <i class="material-icons" style={{"font-size":"36px"}}>view_headline</i>
               </button>
           </div>
           <div className='container2'>
